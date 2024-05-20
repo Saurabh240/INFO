@@ -122,3 +122,102 @@ Use Hooks to stop people scrolling
 The ask post
 This is Who I am -> This is What I do / What I am looking for -> The outcomes -> CTA
 I am linkedin expert and social media consultant -> I am offering 1-2-1 consultancy sessions this month -> You will get personalized help for your business online -> If you know anyone that might be interested please get in touch
+
+#### Create Standout Video content
+
+1. Post helpful tips
+2. Breakdown Video
+3. The intro video
+4. The reaction video
+5. A day in the life video
+
+#### The secret to Expand your network and generate lead
+
+4 Types of Engagement
+
+1. Like
+2. Commment
+3. Tag
+4. Share
+
+#### Linkedinfluencer
+
+Follow linkedinfluencer in your field
+Be Fast to comment on the post
+
+#### The Hitlist Networking Strategy
+
+Companies
+Individuals
+
+Target Companies (Find Employees from your target companies)
+->
+Aim High (Go for the individuals one or two levels above your own position)
+->
+Find Individuals (Search for the decision-makers and recruiters to your dream role)
+
+#### Master Linkedin Search
+
+Search by People
+
+1. Don't go straight for the top position people
+2. Use speech marks (" ") around the term
+3. Search without the search tool
+
+Who to Connect with
+
+1. Executive Recruiters in your niche
+2. Hiring Decision Makers at your target companies
+3. Other Employees at your target companies
+4. Business associates and vendors you have worked with
+5. Current and pas colleagues or clients
+6. Alumini
+7. Friends and Associates
+
+Before Sending the reuests
+View your target's profile
+Send a request when someone views your profile
+
+#### Avoid this Huge Networking mistakes
+
+Avoid too spamy sales messages
+Build relationship
+
+##### Linkedin for Lead Generation
+
+Business Strategy on Linkedin
+
+1. Generate Leads Consistently
+2. Be Repeatable and Not Time Consuming
+3. No Ad Spend Required
+4. No mass spamming
+
+Relationships to Revenue
+
+1. Identify the warm and hot leads
+2. Use the pain point to drive towards a sale
+
+Lead Conversion Template
+
+1. Discuss your lead's pain point (hey there , I noticed that your social media channels on instagram and facebook haven't been updated recently)
+2. Intensify that pain Point (Up to date social media content typically increases customer engagement and monthly revenue)
+3. Position yourself as the Solution (Managing social media content is something that my company helps with all the time)
+4. Provide social proof )(Some of my recent clients include spotify , I worked with them on the Secret Genius Campaign)
+5. Close with a CTA (Is that something you would be interested in ?)
+
+#### Become authority in your niche
+
+Join Linkedin groups
+Browse Group recommended by linkedin
+
+#### Streamline Your efforts with the ultimate linkedin workflow
+
+Passive Actions
+Proactive Actions
+
+#### Linkedin Fails What should be avouided
+
+1. Not including keywords in your headline
+2. Making your profile susceptible to Plagiarism
+3. Tarnishing your personal brand with typos
+4. Not revising your linkedin profile periodically
