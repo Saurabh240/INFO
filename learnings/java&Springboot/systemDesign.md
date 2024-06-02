@@ -1,5 +1,7 @@
 #### The Bigtech System Design Interview Bootcamp
 
+### reference https://ibm-learning.udemy.com/course/the-bigtech-system-design-interview-bootcamp/learn/lecture/36083568#notes
+
 #### TODO List system design
 
 #### Step 1 -> Requirement Analysis
@@ -145,3 +147,16 @@ Storage for 5 years
 4 x 10^9 / 10^6 GB
 4000 GB
 4 TB for 5 years
+
+#### ACID
+
+A -> Atomicity (Something that cannot be broken down into smaller parts)
+C -> Consistency (All Data points within the database must align in order to properly read and accepted)
+I -> Isolation (Concurrently executing transactions are isolated from each other)
+D -> Durability
+
+#### BASE
+
+Basically Available -> Guarantees Its always possible to read and write data even though it but might not be consistent
+Soft State -> This is a mechanism to create consistency over time
+Eventual Consistency -> it allows for high availability and scalability of system
