@@ -151,3 +151,21 @@
 3. Build Tools:
    - Maven and Gradle
    - Dependency management and multi-module projects
+
+
+
+======================================================================
+
+Java
+-streams
+
+Springboot
+- hibernate, jpa
+
+Microservices
+-- design pattern, 
+
+RestApi
+-- swagger
+
+System design
