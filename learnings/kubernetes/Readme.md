@@ -230,3 +230,35 @@ password : cm9vdA==
 kubectl get pods
 
 kubectl describe pod <podname>
+
+
+ReplicaSet for scaling and load balancing the pods
+
+kubectl create -f replicaset-definition.yaml
+
+kubectl get replicaset
+
+kubectl delete replicaset myapp-replicaset (also deletes the pod created using replica set)
+
+kubectl replace -f replicaset-definition.yaml
+
+kubectl scale --replicas=6 -f replicaset-definition.yaml
+
+Deployment creates replicaset and pods both
+
+kubectl create -f deployment.yaml
+
+kubectl create -f deployment.yaml --record (to record the changes in deployment)
+
+kubectl get deployment
+
+kubectl apply -f deployment.yaml
+
+kubectl rollout undo deployment/myapp-deployment
+
+
+
+
+
+
+
