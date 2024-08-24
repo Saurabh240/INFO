@@ -1,0 +1,3 @@
+Freshers Openings
+https://www.linkedin.com/feed/update/urn:li:activity:7205433435056693249?updateEntityUrn=urn%3Ali%3Afs_updateV2%3A%28urn%3Ali%3Aactivity%3A7205433435056693249%2CFEED_DETAIL%2CEMPTY%2CDEFAULT%2Cfalse%29
+https://www.linkedin.com/feed/update/urn:li:activity:7203720140041986050?updateEntityUrn=urn%3Ali%3Afs_updateV2%3A%28urn%3Ali%3Aactivity%3A7203720140041986050%2CFEED_DETAIL%2CEMPTY%2CDEFAULT%2Cfalse%29
