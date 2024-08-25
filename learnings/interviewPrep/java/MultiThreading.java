@@ -22,7 +22,7 @@ Which approach is better? ⭐️
 What is Main Thread?
   Thread responsible to execute the main method.
 
-why we call start method? can't we directly call run method? ⭐️
+why we call start method? can not we directly call run method? ⭐️
   If we directly call run method..
   then we are calling a normal method without creating a new thread.
   that is run method will behave as normal method and now child thread will not get started

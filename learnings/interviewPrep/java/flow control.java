@@ -225,7 +225,7 @@ L2-11:57 What are the difference between classic for loop and foreach loop?
     But in traditional for loop we can also iterate in decremental order.
     By writing i-- in step counter to go backward
 
-    we don't have the access to array index in foreach loop while iterating.
+    we do not have the access to array index in foreach loop while iterating.
     so, we cannot replace the element at the given index.. whereas using for loop
     we are allowed to replace any element in the array by its index.
 

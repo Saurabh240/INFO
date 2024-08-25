@@ -42,7 +42,7 @@ When we had Array, Why do we need collection?
     How can it solve the problems that we had in array?
 
     Collections are grow-able in Nature,
-    that means we aren't bound to declare size of any collection at declaration as we are with arrays.
+    that means we are not bound to declare size of any collection at declaration as we are with arrays.
     Size of collections can be increased or decreased on the base of our programming requirement.
     You can add or remove any number of elements in collection.
 

@@ -157,7 +157,7 @@ What are bounded types? How to Bound a Type parameter?⭐️
     }
 
 What is type inference?⭐️
-    Type inference is a Java compiler's ability to look at each method invocation and corresponding
+    Type inference is a Java compiler s ability to look at each method invocation and corresponding
     declaration to determine the type argument (or arguments) that make the invocation applicable.
     The inference algorithm determines the types of the arguments and, if available, the type that
     the result is being assigned, or returned. Finally, the inference algorithm tries to find the
