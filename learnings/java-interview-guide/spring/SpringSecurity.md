@@ -91,7 +91,3 @@
 - **What is CORS and how is it used?**
   - CORS (Cross-Origin Resource Sharing) allows resources on one domain to be accessed by frontends on different domains.
   - Configured using annotations like `@CrossOrigin` to specify allowed origins, methods, and headers.
-
----
-
-Feel free to adjust any details as needed!
