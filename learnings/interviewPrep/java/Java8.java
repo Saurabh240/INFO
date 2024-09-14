@@ -23,7 +23,7 @@ as parameter to another Functions. This also enables the programming language to
    B) What is Functional Interface
 
    The Answer is that, Every Lambda function in Java is Backed up by a Functional Interface. Java Implemented functional programming or
-   Lambda Expressions using Interfaces to keep the language's backwards compatibility intact.
+   Lambda Expressions using Interfaces to keep the language s backwards compatibility intact.
    Let me now take you through a full background in The following lecture so that you can understand and answer the Questions around Lambda and
    Functional Interfaces.
 
@@ -157,7 +157,7 @@ public static int sum(int a, int b) {
 
 The Functions that return another Function is called Higher Order Functions, and applying these functions one by one like Fluid Operations are called Functional Composition
 
-Let's understand this with an Example -
+Let s understand this with an Example -
 
 Look at this code closely this is returning a Function, so this can be called as Higher Order Function.
 
@@ -170,7 +170,7 @@ public static Comparator<String> reverse(Comparator<String> comp) {
 
 A stream is a sequence of objects that supports various methods which can be pipelined to produce the desired result. Stream connects to
 the data source and convert that into a flow of Objects, that can be processed using methods one by one.
-Let's take an Example -
+Let s take an Example -
 
 public class Parctice02 {
 
@@ -255,7 +255,7 @@ List<Integer> list=Arrays.asList(1,2,2,3,4,5,6,7,8,9);
 
 Lazy evaluation is that Intermediate operations are not executed, until required, and JVM intelligently calls intermediate operations.
 
-Let's prove this using an Example
+Lets prove this using an Example
 
 package com.basicsstrong.apidesign;
 

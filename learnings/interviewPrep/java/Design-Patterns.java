@@ -13,7 +13,7 @@ In how many catogories Design Patterns are classified?⭐️
 A Class Instance Can Be Created Using New Operator. Why Should We Use Creational Design Patterns To Create Objects?⭐️
 
     In scenarios where the nature of the object can change according to the nature of the program,
-    that is where we are not sure about which class's object we are going to create each time.
+    that is where we are not sure about which class s object we are going to create each time.
     we use creational design patterns which offer flexible approach for creating class instances.
 
 Which Object Oriented Method Is Used By The Creational Patterns To Instantiate Object?
