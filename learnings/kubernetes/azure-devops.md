@@ -56,6 +56,23 @@ This step-by-step guide will walk you through deploying a Spring Boot applicatio
 
 ### **Step 3: Dockerize the Spring Boot and React Application**
 
+docker run --name mysql-container -e MYSQL_ROOT_PASSWORD=Saurabh@588 -e MYSQL_DATABASE=empdb -e MYSQL_USER=sky -e MYSQL_PASSWORD=Sky@123 -p 3306:3306 -d mysql:latest
+
+docker exec -it mysql-container bash
+
+mysql -u root -p
+
+SELECT user, host FROM mysql.user;
+
+ALTER USER 'sky'@'%' IDENTIFIED BY 'Sky@123';
+
+GRANT ALL PRIVILEGES ON empdb.* TO 'sky'@'%';
+
+GRANT ALL PRIVILEGES ON *.* TO 'sky'@'%';
+
+FLUSH PRIVILEGES;
+
+
 1. **Create a Dockerfile for Spring Boot**:
    ```Dockerfile
    FROM openjdk:17-jdk-alpine
