@@ -46,3 +46,17 @@
 
 - `Concurrent collections` like `CopyOnWriteArrayList` and `ConcurrentHashMap` are designed for multithreaded environments, allowing safe concurrent modifications.
 - These collections implement `failsafe iterators` and offer features like fine-grained locking (in `ConcurrentHashMap`) for enhanced performance and safety.
+
+### Q-10: What is a Set in Java?
+A collection that doesn't allow duplicates. Implementations include HashSet, TreeSet, LinkedHashSet.
+
+### Q-11: Difference between Iterator and ListIterator?
+Iterator: Only forward iteration.
+ListIterator: Bidirectional iteration (forward and backward).
+
+### Q-12: Explain BlockingQueue.
+A thread-safe queue that supports blocking operations, waiting for space or elements when necessary. Common implementations: ArrayBlockingQueue, LinkedBlockingQueue.
+
+### Q-13: Difference between map() and flatMap() in Streams?
+map(): Transforms each element individually.
+flatMap(): Flattens and transforms each element into a stream.

@@ -55,3 +55,14 @@
 
 - Generics: Introduced in Java 1.5 to enforce type safety by specifying the type of objects stored in collections.
 - Type Erasure: The compiler removes generic type information after ensuring type safety at compile time, allowing older Java code to run on newer JVMs.
+
+### Q-12) What is the difference between == and equals()?
+==: Compares memory addresses (reference equality).
+equals(): Compares content (value equality).
+
+### Q-13) What is transient in Java?
+Used to indicate that a field should not be serialized.
+
+### Q-14) Explain memory management in Java.
+Managed by JVM: Stack (for method calls, local variables) and Heap (for object storage).
+Garbage collector automatically reclaims memory.

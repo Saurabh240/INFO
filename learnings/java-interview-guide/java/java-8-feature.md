@@ -45,3 +45,6 @@
 ### Q-12: Map vs Filter
 
 - The `filter()` method retains elements that match a predicate, while `map()` transforms elements into new values based on provided logic. `filter()` focuses on selection, whereas `map()` focuses on transformation.
+
+### Q-13: Explain Optional in Java.
+Introduced in Java 8 to handle null values. It is a container that may or may not contain a non-null value.

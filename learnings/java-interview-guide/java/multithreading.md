@@ -17,3 +17,19 @@
 ### Q-5: How do threads communicate
 
 - Threads communicate using `wait()`, `notify()`, and `notifyAll()` methods. The `wait()` method releases the lock on an object, allowing other threads to acquire it. Once the work is done, a thread can use `notify()` to wake up one waiting thread or `notifyAll()` to wake up all waiting threads. These methods must be used within a synchronized context to avoid `IllegalMonitorStateException`.
+
+### Q-6: What is a thread in Java?
+A lightweight subprocess. Java provides multithreading capabilities using Thread class or Runnable interface.
+
+### Q-7: What is the difference between Runnable and Callable in Java?
+Runnable: Doesn't return a result or throw checked exceptions.
+Callable: Returns a result and can throw checked exceptions.
+
+### Q-8: What is volatile keyword in Java?
+Ensures that the value of a variable is always read from and written to main memory, avoiding cached local copies.
+
+### Q-9: Explain ExecutorService.
+Manages a pool of threads. Allows asynchronous task execution and manages the lifecycle of threads.
+
+### Q-10: What is ConcurrentHashMap?
+A thread-safe version of HashMap using segment-based locking, allowing concurrent read/write operations.
