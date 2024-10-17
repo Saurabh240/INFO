@@ -27,12 +27,12 @@
 - Define the class with a generic type placeholder (e.g., `<T>`). This placeholder can be used in fields, method parameters, and return types.
 - Instantiate the class with a specific type, replacing the placeholder with the desired type.
 
-### Q-6: Failfast vs Failsafe Iterators
+### Q-6: Failfast vs Failsafe Iterators *
 
 - `Failfast Iterators`: Used by traditional collections like `ArrayList` and `HashSet`. They throw `ConcurrentModificationException` if the collection is modified during iteration.
 - `Failsafe Iterators`: Used by concurrent collections like `CopyOnWriteArrayList`. They allow modifications during iteration without exceptions.
 
-### Q-7: Producer-Consumer Pattern
+### Q-7: Producer-Consumer Pattern *
 
 - `BlockingQueue` is recommended for implementing the producer-consumer pattern. The `put()` method blocks if the queue is full, while the `take()` method blocks if the queue is empty, ensuring coordination between producers and consumers.
 
@@ -42,7 +42,7 @@
 - `Comparator`: Allows custom ordering with the `compare` method.
 - `Comparable` is used for default sorting in collections like `TreeSet`, while `Comparator` provides custom sorting.
 
-### Q-9: What are concurrent collections?
+### Q-9: What are concurrent collections? *
 
 - `Concurrent collections` like `CopyOnWriteArrayList` and `ConcurrentHashMap` are designed for multithreaded environments, allowing safe concurrent modifications.
 - These collections implement `failsafe iterators` and offer features like fine-grained locking (in `ConcurrentHashMap`) for enhanced performance and safety.
@@ -50,7 +50,7 @@
 ### Q-10: What is a Set in Java?
 A collection that doesn't allow duplicates. Implementations include HashSet, TreeSet, LinkedHashSet.
 
-### Q-11: Difference between Iterator and ListIterator?
+### Q-11: Difference between Iterator and ListIterator? *
 Iterator: Only forward iteration.
 ListIterator: Bidirectional iteration (forward and backward).
 

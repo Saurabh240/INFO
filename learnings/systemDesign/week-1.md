@@ -43,43 +43,6 @@
 
 - **Example**: Caching popular product details in Redis to reduce database reads.
 
----
-
-### **Day 4: Question 1 - Design a URL Shortening Service**
-
-#### **Problem Statement**: Design a service like Bit.ly that takes a long URL and returns a shorter one, which redirects users to the original URL.
-
-#### **Key Requirements**:
-1. **Shorten URLs**: Convert a long URL into a unique short URL.
-2. **Redirect**: When the short URL is clicked, redirect users to the original URL.
-3. **Scalability**: Handle millions of URLs and high traffic.
-4. **Availability**: Ensure the service is always available.
-
-#### **Components**:
-- **API Layer**: To accept long URLs and return short URLs.
-- **Database**: Store the mapping between short and long URLs. Choose a key-value store (e.g., Redis, DynamoDB) for fast lookups.
-- **Hashing**: Generate unique short URLs.
-  - **Example**: Use a Base62-encoded hash (letters + digits) for the shortened URL.
-- **Load Balancer**: Distribute traffic across multiple servers.
-- **Caching**: Cache frequently requested short URLs to reduce database load.
-- **Expiration (Optional)**: Expire unused URLs after a certain time period.
-
-#### **Solution**:
-1. **Short URL Generation**:
-   - Use a **Base62 encoding** technique (comprising letters and numbers) to generate a short unique key.
-   - Example: Convert URL "https://www.example.com/article/12345" to "abc123".
-
-2. **Database Schema**:
-   - **Table: URLMappings**
-     - Columns: ShortURL, LongURL, ExpirationDate (optional).
-     - Example: Store mappings such as "abc123" -> "https://www.example.com/article/12345".
-
-3. **Load Balancer**: Distribute the requests for short URL lookups across multiple application servers.
-
-4. **Cache**: Frequently accessed short URLs are cached in Redis to speed up response time for popular links.
-
----
-
 ### **Day 5-7: Database Fundamentals**
 
 #### **Day 5: RDBMS vs. NoSQL**

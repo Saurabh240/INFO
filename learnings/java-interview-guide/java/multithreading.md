@@ -1,6 +1,42 @@
 ### Q-1: How to create threads
 
 - Threads can be created by either extending the `Thread` class and overriding the `run()` method or by implementing the `Runnable` interface and providing an implementation for the `run()` method. The first approach requires creating an instance of the thread class and invoking `start()`, while the second approach involves passing an instance of the `Runnable` implementation to a `Thread` instance and then calling `start()`.
+### Using Thread Class
+class MyThread extends Thread {
+    @Override
+    public void run() { 
+        System.out.println("Thread is running using Thread class.");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Create an instance of MyThread
+        MyThread thread = new MyThread();
+        // Start the thread
+        thread.start();
+    }
+}
+
+### Using Runnable
+class MyRunnable implements Runnable {
+    @Override
+    public void run() {
+        System.out.println("Thread is running using Runnable interface.");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Create an instance of MyRunnable
+        MyRunnable runnable = new MyRunnable();
+        // Create a new Thread with the runnable object
+        Thread thread = new Thread(runnable);
+        // Start the thread
+        thread.start();
+    }
+}
+
 
 ### Q-2: What is Synchronization
 
@@ -10,7 +46,7 @@
 
 - Each class in Java has a unique class-level lock. When a thread executes a synchronized static method, it acquires the class-level lock, which prevents other threads from accessing synchronized static methods in that class until the lock is released.
 
-### Q-4: What are synchronized blocks
+### Q-4: What are synchronized blocks *
 
 - Synchronized blocks are used to lock only specific sections of code rather than an entire method. This allows for finer control over synchronization by locking only the necessary lines of code within a block, using a specified object or class as the lock.
 
