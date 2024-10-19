@@ -1,118 +1,76 @@
 # Spring Framework and Spring Boot Overview
 
-## Q-1: What is Dependency Injection and IoC?
+## Q-1: What is Spring Boot, and why did you use Spring Boot in your project?
+**A**: Spring Boot is a framework for RAD (Rapid Application Development) using Spring Framework with support for auto-configuration and embedded application servers like Tomcat or Jetty. It helps in creating production-ready standalone applications that you can easily run.
 
-### Dependency Injection (DI)
+## Q-2: Is it possible to change the port of the embedded Tomcat server in Spring Boot?
+**A**: Yes, by default, the port is 8080, but you can change it in `application.properties` by setting `server.port=<new_port_no>`.
 
-- **Definition**: DI is a design pattern where an external component provides the dependencies of a class rather than the class creating them internally.
-- **Example**:
-  - **Without DI**: A `ProductController` creates an instance of `ProductDao` inside itself.
-  - **With DI**: The `ProductController` has its `ProductDao` dependency injected by an external framework, such as Spring.
-- **Benefit**: Focuses on business logic rather than object creation, leading to more manageable and testable code.
+## Q-3: How can you disable a specific auto-configuration class?
+**A**: You can disable an auto-configuration class by using the `exclude` attribute.  
+Example:
+```java
+@EnableAutoConfiguration(exclude={DataSourceConfiguration.class})
+```
 
-### Inversion of Control (IoC)
+## Q-4: What is @SpringBootApplication in Spring Boot?
+**A**: `@SpringBootApplication` is a meta-annotation that combines:
+- `@SpringBootConfiguration`: Marks the class as a source of bean definitions.
+- `@EnableAutoConfiguration`: Enables auto-configuration based on classpath dependencies.
+- `@ComponentScan`: Scans for components in the package and its sub-packages.
 
-- **Definition**: IoC is a principle where the control of object creation is shifted from the application code to an external framework or container.
-- **Purpose**: Moves the responsibility of creating and managing object dependencies away from the application to a framework like Spring.
-- **Example**: Spring dynamically creates and injects `ProductDao` into `ProductController`, adhering to the IoC principle.
+## Q-5: How do you use a property defined in the application.properties file in your Java class?
+**A**: You can use the `@Value` annotation to access properties defined in the `application.properties` file.
+Example:
+```java
+@Value("${custom.value}")
+private String customVal;
+```
 
-## Q-2: What are the Spring Bean Scopes?
+## Q-6: What is the difference between @Controller and @RestController in Spring?
+**A**:
+- `@Controller`: Returns a view and is used for web MVC applications.
+- `@RestController`: A combination of `@Controller` and `@ResponseBody`, returning JSON/XML data directly instead of a view.
 
-### Singleton Scope
+## Q-7: What are Spring Boot Profiles?
+**A**: Profiles manage environment-specific configurations (`dev`, `test`, `prod`).
+- You can define profile-specific properties files (e.g., `application-dev.properties`).
+- Activate profiles via the `spring.profiles.active` property or JVM argument `-Dspring.profiles.active`.
 
-- **Definition**: Only one instance of the bean is created per Spring IoC container. The same instance is used throughout the application.
-- **Default Scope**: Singleton is the default bean scope in Spring.
-- **Use Case**: Suitable for stateless beans like controllers and DAOs.
+## Q-8: What is a Spring Boot Actuator?
+**A**: The Spring Boot Actuator provides operational information such as application health, metrics, environment properties, and more for running Spring Boot applications.
 
-### Prototype Scope
+## Q-9: What is Dependency Injection (DI) and Inversion of Control (IoC)?
+**A**: 
+- **Dependency Injection (DI)**: It is a design pattern where an external component provides the dependencies of a class rather than the class creating them. It focuses on business logic rather than object creation, making code more manageable and testable.
+- **Inversion of Control (IoC)**: IoC is a principle that shifts the control of object creation from the application code to an external framework like Spring. This moves the responsibility of managing object dependencies to the framework.
 
-- **Definition**: A new instance of the bean is created every time it is requested.
-- **Use Case**: Suitable for stateful beans, as each request gets a new instance, preventing data corruption across threads.
+## Q-10: What are Spring Bean Scopes?
+**A**:
+- **Singleton Scope**: Only one instance of the bean is created per Spring IoC container. It is the default scope and is used for stateless beans.
+- **Prototype Scope**: A new instance is created each time it is requested, making it suitable for stateful beans.
+- **Request Scope**: Creates a new bean instance for each HTTP request.
+- **Session Scope**: A single bean instance is used across an HTTP session.
+- **Global Session Scope**: Used in portlet applications, creating a single instance across all portlets in a global session.
 
-## Q-3: Prototype in Singleton
+## Q-11: Can a Prototype Bean be injected into a Singleton Bean?
+**A**: Yes, a prototype bean can be injected into a singleton bean. However, the same prototype instance will be used unless you manually request a new instance from the application context.
 
-### Can a Prototype Bean be Injected into a Singleton Bean?
+## Q-12: What are the Problems with Traditional Spring?
+**A**:
+- **Configuration Complexity**: Required extensive XML or Java-based configuration for different modules.
+- **Dependency Management**: Manual dependency inclusion with compatibility checks between versions.
+- **Deployment Challenges**: Required manual deployment to external web or application servers.
 
-- **Answer**: Yes, a prototype bean can be injected into a singleton bean. However, the singleton bean will use the same instance of the prototype bean that was injected at runtime. To obtain a new instance of the prototype bean, you may need to manually request it from the application context.
+## Q-13: Why use Spring Boot?
+**A**:
+- **Auto-Configuration**: Automatically configures the application based on classpath dependencies.
+- **Dependency Management**: Simplifies dependency management through predefined starters.
+- **Embedded Containers**: Provides embedded servlet containers like Tomcat, making deployment easier.
+- **Actuators**: Offers endpoints to monitor application health, configuration, and metrics.
 
-## Q-4: What are HTTP Scopes?
+## Q-14: What is @SpringBootTest?
+**A**: `@SpringBootTest` is an annotation used to run tests with a Spring application context. It loads the entire Spring context, making all beans available for testing.
 
-### Request Scope
-
-- **Definition**: A new bean instance is created for each HTTP request.
-- **Use Case**: Ideal for beans that need to be unique per request.
-
-### Session Scope
-
-- **Definition**: A single bean instance is used across an HTTP session, which may consist of multiple requests and responses.
-- **Use Case**: Suitable for beans that need to maintain state across multiple requests within the same session.
-
-### Global Session Scope
-
-- **Definition**: Applies to portlet applications, creating a single bean instance across all portlets in a global session.
-- **Use Case**: Useful in portlet-based applications for maintaining state across portlets.
-
-## Q-5: What are the Problems with Traditional Spring?
-
-### Configuration Complexity
-
-- **Pre-Spring Boot**: Required extensive XML or Java-based configuration for different modules (e.g., Core, MVC, DAO, ORM).
-- **Issue**: Maintaining configuration and ensuring compatibility between modules was cumbersome.
-
-### Dependency Management
-
-- **Pre-Spring Boot**: Manual inclusion of dependencies in Maven or Gradle files, with compatibility checks between versions.
-
-### Deployment Challenges
-
-- **Pre-Spring Boot**: Applications needed to be manually deployed to external web containers or application servers.
-
-## Q-6: Why Use Spring Boot?
-
-### Auto-Configuration
-
-- **Definition**: Automatically configures the application based on dependencies on the classpath, reducing manual setup.
-- **Example**: Adds and configures a DispatcherServlet for web applications or a DataSource for JPA.
-
-### Dependency Management
-
-- **Spring Boot Starters**: Simplify dependency inclusion and version management through predefined starters (e.g., `spring-boot-starter-web`, `spring-boot-starter-data-jpa`).
-
-### Embedded Containers
-
-- **Definition**: Provides embedded servlet containers (e.g., Tomcat, Jetty, Undertow), making deployment simpler.
-
-### Actuators
-
-- **Definition**: Offers endpoints to monitor application health, configuration, and metrics, enhancing application management and monitoring.
-
-## Q-7: What is @SpringBootApplication?
-
-### Definition
-
-- **Annotation**: The entry point for a Spring Boot application, combining three annotations:
-  - **@SpringBootConfiguration**: Marks the class as a source of bean definitions.
-  - **@EnableAutoConfiguration**: Enables auto-configuration based on classpath dependencies.
-  - **@ComponentScan**: Scans for components in the package and its sub-packages.
-
-### Purpose
-
-- **Combines**: Configures and initializes the application context, enabling automatic setup and scanning for Spring components.
-
-## Q-8: What is @SpringBootTest?
-
-### Definition
-
-- **Annotation**: Used to run tests with a Spring application context.
-- **Function**: Loads the entire Spring context, making all beans available for testing.
-- **Mechanism**: Uses a Spring extension class to create and manage the Spring context, then runs tests with JUnit.
-
-## Q-9: Explain the difference between @Controller and @RestController in Spring.
-@Controller: Returns a view, used for web MVC applications.
-@RestController: Simplified version of @Controller and @ResponseBody combined, returns JSON/XML data directly.
-
-## Q-10: What is @Autowired in Spring?
-@Autowired is used for dependency injection. Spring automatically resolves and injects beans marked with this annotation.
-
-## Q-11: What is a Spring Boot actuator?
-Actuator provides operational information about running Spring Boot applications, such as health, metrics, environment properties, and more.
+## Q-15: What is @Autowired in Spring?
+**A**: `@Autowired` is used for dependency injection. Spring automatically resolves and injects beans marked with this annotation.

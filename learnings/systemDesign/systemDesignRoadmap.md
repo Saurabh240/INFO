@@ -1,5 +1,12 @@
 https://github.com/ashishps1/awesome-low-level-design
 
+How to pass any system design interview
+* Understand problem and break it into concrete technical requirement
+* 
+draw.io
+omnigraffle
+whimsical
+
 System Design Involves Figuring Out
 * What are the requirements of the System
 * Who are the users and How many ?
