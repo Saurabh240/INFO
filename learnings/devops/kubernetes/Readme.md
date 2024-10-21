@@ -256,8 +256,12 @@ kubectl apply -f deployment.yaml
 
 kubectl rollout undo deployment/myapp-deployment
 
+If your service is of type LoadBalancer and you want to simulate cloud-like behavior, you can start a tunnel that routes traffic to the service's external port.
+minikube tunnel
 
+minikube service react-frontend-service
 
+minikube service react-frontend-service --url
 
 
 
