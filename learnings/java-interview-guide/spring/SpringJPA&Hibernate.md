@@ -1,4 +1,4 @@
-# ***Spring Data JPA and ORM Documentation***
+# ***Spring Data JPA and Hibernate***
 
 ### **Easy Questions:**
 
