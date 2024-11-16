@@ -1,3 +1,109 @@
+### 8 DSA concepts to solve 80% of problem on leetcode
+
+Steps to solve the problem
+1. Simplify Problem
+2. Pattern Recognition
+3. Implementation Plan
+4. Coding Time
+5. Debug
+
+### 1. **Two Pointers**
+
+- **[LeetCode 1 - Two Sum](https://leetcode.com/problems/two-sum/)**  
+- **[LeetCode 15 - 3Sum](https://leetcode.com/problems/3sum/)**
+- **[LeetCode 42 - Trapping Rain Water](https://leetcode.com/problems/trapping-rain-water/)**
+- **[LeetCode 125 - Valid Palindrome](https://leetcode.com/problems/valid-palindrome/)**
+- **[LeetCode 167 - Two Sum II - Input Array Is Sorted](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/)**
+- **[LeetCode 344 - Reverse String](https://leetcode.com/problems/reverse-string/)**
+- **[LeetCode 680 - Valid Palindrome II](https://leetcode.com/problems/valid-palindrome-ii/)**
+- **[LeetCode 986 - Interval List Intersections](https://leetcode.com/problems/interval-list-intersections/)**
+
+---
+
+### 2. **Binary Tree BFS**
+
+- **[LeetCode 102 - Binary Tree Level Order Traversal](https://leetcode.com/problems/binary-tree-level-order-traversal/)**
+- **[LeetCode 103 - Binary Tree Zigzag Level Order Traversal](https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/)**
+- **[LeetCode 107 - Binary Tree Level Order Traversal II](https://leetcode.com/problems/binary-tree-level-order-traversal-ii/)**
+- **[LeetCode 199 - Binary Tree Right Side View](https://leetcode.com/problems/binary-tree-right-side-view/)**
+- **[LeetCode 429 - N-ary Tree Level Order Traversal](https://leetcode.com/problems/n-ary-tree-level-order-traversal/)**
+- **[LeetCode 515 - Find Largest Value in Each Tree Row](https://leetcode.com/problems/find-largest-value-in-each-tree-row/)**
+- **[LeetCode 637 - Average of Levels in Binary Tree](https://leetcode.com/problems/average-of-levels-in-binary-tree/)**
+
+---
+
+### 3. **Topological Sort**
+
+- **[LeetCode 207 - Course Schedule](https://leetcode.com/problems/course-schedule/)**
+- **[LeetCode 210 - Course Schedule II](https://leetcode.com/problems/course-schedule-ii/)**
+- **[LeetCode 310 - Minimum Height Trees](https://leetcode.com/problems/minimum-height-trees/)**
+- **[LeetCode 329 - Longest Increasing Path in a Matrix](https://leetcode.com/problems/longest-increasing-path-in-a-matrix/)**
+- **[LeetCode 444 - Sequence Reconstruction](https://leetcode.com/problems/sequence-reconstruction/)**
+- **[LeetCode 802 - Find Eventual Safe States](https://leetcode.com/problems/find-eventual-safe-states/)**
+- **[LeetCode 1462 - Course Schedule IV](https://leetcode.com/problems/course-schedule-iv/)**
+
+---
+
+### 4. **Binary Tree DFS**
+
+- **[LeetCode 94 - Binary Tree Inorder Traversal](https://leetcode.com/problems/binary-tree-inorder-traversal/)**
+- **[LeetCode 98 - Validate Binary Search Tree](https://leetcode.com/problems/validate-binary-search-tree/)**
+- **[LeetCode 101 - Symmetric Tree](https://leetcode.com/problems/symmetric-tree/)**
+- **[LeetCode 112 - Path Sum](https://leetcode.com/problems/path-sum/)**
+- **[LeetCode 113 - Path Sum II](https://leetcode.com/problems/path-sum-ii/)**
+- **[LeetCode 124 - Binary Tree Maximum Path Sum](https://leetcode.com/problems/binary-tree-maximum-path-sum/)**
+- **[LeetCode 230 - Kth Smallest Element in a BST](https://leetcode.com/problems/kth-smallest-element-in-a-bst/)**
+
+---
+
+### 5. **Top K Elements**
+
+- **[LeetCode 215 - Kth Largest Element in an Array](https://leetcode.com/problems/kth-largest-element-in-an-array/)**
+- **[LeetCode 347 - Top K Frequent Elements](https://leetcode.com/problems/top-k-frequent-elements/)**
+- **[LeetCode 451 - Sort Characters By Frequency](https://leetcode.com/problems/sort-characters-by-frequency/)**
+- **[LeetCode 692 - Top K Frequent Words](https://leetcode.com/problems/top-k-frequent-words/)**
+- **[LeetCode 703 - Kth Largest Element in a Stream](https://leetcode.com/problems/kth-largest-element-in-a-stream/)**
+- **[LeetCode 973 - K Closest Points to Origin](https://leetcode.com/problems/k-closest-points-to-origin/)**
+- **[LeetCode 1046 - Last Stone Weight](https://leetcode.com/problems/last-stone-weight/)**
+
+---
+
+### 6. **Modified Binary Search**
+
+- **[LeetCode 33 - Search in Rotated Sorted Array](https://leetcode.com/problems/search-in-rotated-sorted-array/)**
+- **[LeetCode 34 - Find First and Last Position of Element in Sorted Array](https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/)**
+- **[LeetCode 81 - Search in Rotated Sorted Array II](https://leetcode.com/problems/search-in-rotated-sorted-array-ii/)**
+- **[LeetCode 153 - Find Minimum in Rotated Sorted Array](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/)**
+- **[LeetCode 154 - Find Minimum in Rotated Sorted Array II](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array-ii/)**
+- **[LeetCode 162 - Find Peak Element](https://leetcode.com/problems/find-peak-element/)**
+- **[LeetCode 410 - Split Array Largest Sum](https://leetcode.com/problems/split-array-largest-sum/)**
+
+---
+
+### 7. **Subset Problems**
+
+- **[LeetCode 78 - Subsets](https://leetcode.com/problems/subsets/)**
+- **[LeetCode 90 - Subsets II](https://leetcode.com/problems/subsets-ii/)**
+- **[LeetCode 39 - Combination Sum](https://leetcode.com/problems/combination-sum/)**
+- **[LeetCode 40 - Combination Sum II](https://leetcode.com/problems/combination-sum-ii/)**
+- **[LeetCode 46 - Permutations](https://leetcode.com/problems/permutations/)**
+- **[LeetCode 47 - Permutations II](https://leetcode.com/problems/permutations-ii/)**
+- **[LeetCode 131 - Palindrome Partitioning](https://leetcode.com/problems/palindrome-partitioning/)**
+
+---
+
+### 8. **Sliding Window**
+
+- **[LeetCode 3 - Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters/)**
+- **[LeetCode 76 - Minimum Window Substring](https://leetcode.com/problems/minimum-window-substring/)**
+- **[LeetCode 209 - Minimum Size Subarray Sum](https://leetcode.com/problems/minimum-size-subarray-sum/)**
+- **[LeetCode 424 - Longest Repeating Character Replacement](https://leetcode.com/problems/longest-repeating-character-replacement/)**
+- **[LeetCode 438 - Find All Anagrams in a String](https://leetcode.com/problems/find-all-anagrams-in-a-string/)**
+- **[LeetCode 567 - Permutation in String](https://leetcode.com/problems/permutation-in-string/)**
+- **[LeetCode 1004 - Max Consecutive Ones III](https://leetcode.com/problems/max-consecutive-ones-iii/)**
+
+---
+
 ### **Day 1–2: Arrays and String Problems**
 
 #### **Key Concepts**
