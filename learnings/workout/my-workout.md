@@ -14,5 +14,3 @@
 - **Log your weights** and try to add a little more load or one extra rep each week.  
 - **Superset** (pair) small‐muscle moves—e.g. Triceps Pushdown → Hammer Curl—to save time.  
 - **Finish** every session with 5 minutes of mobility/foam‑roll for faster recovery.  
-
-Feel free to swap in/out equivalent movements based on equipment or time constraints—this template keeps the core structure so you hit every muscle and still have that all‑important full‑body day to round things out.
