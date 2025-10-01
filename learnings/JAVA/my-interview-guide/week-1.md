@@ -21,7 +21,16 @@ System.out.println(filtered);
 ```
 
 **💡 Task:** From a list of employees, filter those with salary > 50k, sort by name, and collect names into a list.
-
+      Solution : 
+        List<Employee> employeeList = new ArrayList<>();
+        employeeList.add(new Employee(1,"Saurabh", 70000 ));
+        employeeList.add(new Employee(2,"Gaurav", 50000 ));
+        employeeList.add(new Employee(3,"Mohan", 60000 ));
+        List<Employee> filteredList = employeeList.stream()
+                .filter(e -> e.salary() >= 50000)
+                .sorted(Comparator.comparing(Employee::name))
+                .toList();
+        System.out.println(filteredList);
 ---
 
 #### 🔹 b. **Optional (Java 8)**
@@ -36,7 +45,15 @@ System.out.println(name.orElse("Default Name"));
 ```
 
 **💡 Task:** Implement a method `getUserEmail(id)` that returns `Optional<String>`, and log “Email not found” if empty.
-
+ Solution : 
+ public class Test {
+    public static void main(String[] args) {
+        System.out.println(getUserEmail("test@gmail.com").orElse("Email not found"));
+    }
+    public static Optional<String> getUserEmail(String email) {
+        return Optional.ofNullable(email);
+    }
+}
 ---
 
 #### 🔹 c. **CompletableFuture (Java 8)**
@@ -52,7 +69,57 @@ CompletableFuture.supplyAsync(() -> "Hello")
 ```
 
 **💡 Task:** Chain 3 async tasks: Fetch User → Get Orders → Send Email.
+ Solution : 
+ public class Test {
+        public static void main(String[] args) {
+            CompletableFuture<Void> workflow = fetchUser()
+                    .thenCompose(Test::getOrders)
+                    .thenCompose(Test::sendEmail);
 
+            workflow.join();
+            System.out.println("Workflow completed successfully.");
+        }
+
+        static CompletableFuture<User> fetchUser() {
+            return CompletableFuture.supplyAsync(() -> {
+                simulateDelay("Fetching user...");
+                return new User("Alice");
+            });
+        }
+
+        static CompletableFuture<List<Order>> getOrders(User user) {
+            return CompletableFuture.supplyAsync(() -> {
+                simulateDelay("Getting orders for " + user.name);
+                return List.of(new Order("O-123"), new Order("O-456"));
+            });
+        }
+
+        static CompletableFuture<Void> sendEmail(List<Order> orders) {
+            return CompletableFuture.runAsync(() -> {
+                simulateDelay("Sending email for orders: " + orders.size());
+                System.out.println("Email sent for orders: " + orders.size());
+            });
+        }
+
+        static void simulateDelay(String msg) {
+            try {
+                System.out.println(msg);
+                TimeUnit.SECONDS.sleep(1);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+        }
+    }
+
+class User {
+    String name;
+    User(String name) { this.name = name; }
+}
+
+class Order {
+    String orderId;
+    Order(String orderId) { this.orderId = orderId; }
+}
 ---
 
 #### 🔹 d. **Records (Java 16)**
@@ -100,7 +167,22 @@ if (obj instanceof String s) {
 ```
 
 **💡 Task:** Use pattern matching in switch to classify an `Object` as Integer, String, or other.
+ Solution : 
+ public class Test {
+    public static void main(String[] args) {
+      classifyObject(4);
+      classifyObject("hello");
+      classifyObject(12.5);
+    }
 
+    static void classifyObject(Object obj) {
+        switch (obj) {
+            case Integer i -> System.out.println(i);
+            case String s -> System.out.println(s);
+                default -> System.out.println("Unknown Type");
+        }
+    }
+}
 ---
 
 ### ✅ 2. **Memory Model: Heap, Stack, GC**
@@ -153,6 +235,54 @@ class Product {
 ```
 
 **💡 Task:** Insert multiple products into a `HashSet`, detect duplicates by id.
+ Solution : 
+
+class Product {
+    private int id;
+    private String name;
+
+    public Product(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public int getId() { return id; }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Product)) return false;
+        Product product = (Product) o;
+        return id == product.id;  // Compare by id only
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);  // Hash by id only
+    }
+
+    @Override
+    public String toString() {
+        return "Product{id=" + id + ", name='" + name + "'}";
+    }
+}
+
+public class HashSetDuplicateDetection {
+    public static void main(String[] args) {
+        Set<Product> products = new HashSet<>();
+
+        Product p1 = new Product(1, "Laptop");
+        Product p2 = new Product(2, "Phone");
+        Product p3 = new Product(1, "Tablet"); // Same id as p1 → duplicate by id
+
+        System.out.println("Adding p1: " + products.add(p1)); // true
+        System.out.println("Adding p2: " + products.add(p2)); // true
+        System.out.println("Adding p3: " + products.add(p3)); // false → duplicate id
+
+        System.out.println("\nProducts in HashSet:");
+        products.forEach(System.out::println);
+    }
+}
 
 ---
 
