@@ -71,7 +71,7 @@ private List<Order> orders;
 
 ## 2. Transactions in JPA
 
-### Q2. How do `@Transactional` and JPA interact? What is the persistence context?
+* ### Q2. How do `@Transactional` and JPA interact? What is the persistence context?
 
 The **Persistence Context** is Hibernate's first-level cache — it tracks all entities loaded within a transaction. Changes are **automatically flushed** to the DB at the end of the transaction (dirty checking).
 
