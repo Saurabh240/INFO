@@ -430,6 +430,9 @@ RetryConfig retryConfig = RetryConfig.custom()
 ### Q7. What does an API Gateway do? How does service discovery work?
 
 **API Gateway (Spring Cloud Gateway):**
+
+A single entry point for all client requests into your microservices ecosystem.
+
 ```yaml
 spring:
   cloud:
@@ -452,6 +455,9 @@ spring:
 ```
 
 **Service Discovery (Eureka):**
+
+A service registry where all microservices register themselves and discover others dynamically.
+
 ```java
 // Service registers itself on startup
 @SpringBootApplication
@@ -468,6 +474,9 @@ eureka:
     lease-renewal-interval-in-seconds: 10    // heartbeat every 10s
     lease-expiration-duration-in-seconds: 30 // deregister if no heartbeat in 30s
 ```
+
+### API Gateway handles routing, security, and request processing, while Service Discovery enables dynamic lookup of service instances; 
+together they allow scalable and decoupled microservices communication.
 
 ---
 
