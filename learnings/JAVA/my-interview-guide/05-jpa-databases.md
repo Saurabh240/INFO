@@ -115,6 +115,32 @@ public class ReportService {
 }
 ```
 
+### Q9. Explain `@Transactional` — propagation, isolation, and common pitfalls.
+ 
+**Propagation:**
+ 
+| Type | Behavior |
+|------|----------|
+| `REQUIRED` (default) | Joins existing tx; creates new if none |
+| `REQUIRES_NEW` | Suspends current; always new tx |
+| `NESTED` | Savepoint within current tx |
+| `SUPPORTS` | Uses existing if present; else non-transactional |
+ 
+**Isolation Levels:**
+ 
+| Level | Dirty Read | Non-Repeatable Read | Phantom Read |
+|-------|-----------|--------------------|----|
+| READ_UNCOMMITTED | ✅ | ✅ | ✅ |
+| READ_COMMITTED | ❌ | ✅ | ✅ |
+| REPEATABLE_READ | ❌ | ❌ | ✅ |
+| SERIALIZABLE | ❌ | ❌ | ❌ |
+ 
+**Common Pitfalls:**
+1. **Self-invocation** — calling `@Transactional` method from same class bypasses proxy (AOP)
+2. **Checked exceptions** — by default, only `RuntimeException` triggers rollback; use `rollbackFor = Exception.class`
+3. **`REQUIRES_NEW` with lazy loading** — can cause `LazyInitializationException` in new context
+
+
 ---
 
 ## 3. Optimistic vs Pessimistic Locking
