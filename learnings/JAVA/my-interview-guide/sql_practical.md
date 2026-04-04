@@ -1,5 +1,3 @@
----
- 
 ### Q1. Find the second highest salary from an Employee table.
  
 **Schema:** `Employee(id, name, salary, department_id)`
