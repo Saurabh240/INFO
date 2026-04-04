@@ -1,5 +1,3 @@
----
- 
 ### Q11. Find the list of distinct department names from a list of employees, sorted alphabetically.
  
 ```java
