@@ -24,33 +24,7 @@ Currently, I'm looking for opportunities where I can work on large-scale distrib
 
 **Answer:**
 
-Our system is designed as a microservices-based architecture for handling high-volume banking transactions and exposure calculations.
-
-The flow starts with the **Transaction Processor Service**, which receives incoming transaction data via REST APIs. This service performs initial validation and publishes events to Kafka topics.
-
-From there, downstream services like **roll-up services** and **summary services** consume these events asynchronously. Roll-up services aggregate data at different levels (like account or customer), and summary services generate final exposure views used for risk assessment.
-
-We also have **manual and suspense review services**, which handle edge cases or failed transactions that require human intervention.
-
-**For communication:**
-- We use synchronous REST calls (WebClient) where an immediate response is required
-- We use Kafka-based asynchronous communication for high-throughput processing and decoupling services
-
-**Kafka is central to our system — we use it to:**
-- Handle large volumes of events reliably
-- Enable parallel processing using partitions
-- Maintain loose coupling between services
-
-**For fault tolerance:**
-- We use Resilience4j for circuit breaking and retries
-- Implement idempotency to avoid duplicate processing
-- Use retry topics and DLQs for failed Kafka messages
-
-**For scalability:**
-- Services are containerized using Docker and deployed on Kubernetes
-- We scale horizontally using Kubernetes HPA based on CPU and Kafka lag
-
-This architecture allows us to process high transaction volumes with reliability and minimal downtime.
+Currently I'm working on a banking platform related to payment authorization and risk assessment. My current project has two important journeys — the Payment Events Journey and the Exposure Journey. At a high level, when a payment event comes into the platform, the Payment Events Journey ingests and validates the event, enriches it with required metadata and routes it through the appropriate risk-processing path. It's primarily an event-driven architecture using Kafka, with gRPC used for some synchronous communication between components. The other major journey is the Exposure Journey. Its purpose is to calculate and maintain the One Exposure, which represents the amount a borrower owes at a particular point in time. Exposure is calculated and reconciled using inputs such as GAR transaction data, GAR summary data, authorization records, reversals, adjustments and payment events. The Exposure Journey has different processors for transaction matching, exposure calculation, refresh, roll-up and reconciliation. Data comes through the ingress layer, is processed by the appropriate processors, persisted through the data layer and then distributed to downstream systems. Technically, we're using Java and Spring Boot, Kafka and Google Pub/Sub for event-driven processing, gRPC for service communication, Cassandra/PostgreSQL and RDM for persistence, and Kubernetes for deployment. My role is primarily on the backend side — working on Java/Spring Boot services, event processing, APIs, troubleshooting, testing and understanding the end-to-end flow across these journeys.
 
 ---
 
