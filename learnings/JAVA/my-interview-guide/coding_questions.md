@@ -1,6 +1,6 @@
 # Java Coding Interview Problems
 
-## 1. Group Anagrams
+## 1. Group Anagrams*
 
 Given an array of strings, group all strings that are anagrams of each other.
 
@@ -160,7 +160,7 @@ public Character firstNonRepeatedChar(String s) {
 
 ---
 
-## 3. Valid / Balanced Parentheses (Stack)
+## 3. Valid / Balanced Parentheses (Stack)*
 
 Check whether a string of brackets is balanced.
 
@@ -214,7 +214,7 @@ public boolean isValid(String s) {
 
 ---
 
-## 4. Two Sum
+## 4. Two Sum*
 
 Find two indices whose values add up to the target.
 
@@ -447,7 +447,7 @@ All existing numbers cancel each other out, so only the missing number remains.
 
 ---
 
-## 10. Longest Substring Without Repeating Characters
+## 10. Longest Substring Without Repeating Characters*
 
 One of the most important sliding-window interview questions.
 
@@ -516,7 +516,7 @@ public static int longestSubstring(String s) {
 
 ---
 
-## 11. Merge Two Sorted Arrays
+## 11. Merge Two Sorted Arrays*
 
 **Input**
 ```
