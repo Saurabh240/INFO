@@ -277,3 +277,204 @@ Don't suddenly reduce yourself to ₹25–26L unless you have a specific reason.
 > "I understand. I'll discuss the possibility of an early release and see what can be worked out."
 
 Don't promise a date you cannot guarantee.
+
+---
+
+## Java
+
+### Q1. What's new/different in Java 8+ that you actually use day to day?
+
+> "I use Streams and lambdas regularly for collection processing, `Optional` to avoid null checks, and functional interfaces for cleaner callback-style code. I also rely on `CompletableFuture` for async orchestration when calling multiple downstream services in parallel."
+
+### Q2. Explain `HashMap` internals — what happens on a collision?
+
+> "A `HashMap` stores entries in buckets based on the key's hash code. On collision, entries in the same bucket are stored as a linked list; since Java 8, if a bucket grows beyond a threshold (8 entries) it's converted to a red-black tree for O(log n) lookup instead of O(n). `hashCode()` determines the bucket, `equals()` resolves collisions within it."
+
+### Q3. Difference between `synchronized` and `ConcurrentHashMap` / `volatile`?
+
+> "`synchronized` locks the entire block/method, which can hurt throughput. `ConcurrentHashMap` uses finer-grained locking (segment/bucket level) so multiple threads can read/write different parts concurrently. `volatile` only guarantees visibility of a variable across threads, not atomicity — it's not a substitute for locking when you need compound operations like increment."
+
+---
+
+## Spring Boot
+
+### Q1. How does Spring Boot auto-configuration work?
+
+> "Spring Boot uses `@EnableAutoConfiguration`, which scans `META-INF/spring.factories` (or `AutoConfiguration.imports` in newer versions) for configuration classes annotated with `@Conditional` variants like `@ConditionalOnClass` or `@ConditionalOnMissingBean`. Based on what's on the classpath and what beans already exist, Spring decides which beans to auto-register — that's why adding a starter dependency is often enough to get working defaults."
+
+### Q2. Explain the Spring Bean lifecycle / scopes you've used.
+
+> "Beans are created, dependencies injected, `@PostConstruct` called, then the bean is ready; on shutdown `@PreDestroy` runs. I mostly use singleton scope by default, prototype scope for stateful helper objects, and request scope for web-tier beans that hold request-specific data."
+
+### Q3. How do you handle global exception handling and validation in a REST API?
+
+> "I use `@ControllerAdvice` with `@ExceptionHandler` methods to centralize error responses in a consistent shape, and `@Valid`/`@Validated` with bean validation annotations on request DTOs for input validation. I map exceptions to appropriate HTTP status codes rather than leaking stack traces to the client."
+
+---
+
+## Microservices
+
+### Q1. How do your services communicate — sync vs async — and why?
+
+> "For request/response flows where the caller needs an immediate answer, I use REST over HTTP, typically through an API Gateway or ALB. For workflows that don't need an immediate response, or where I want to decouple services and absorb load spikes, I use Kafka for asynchronous, event-driven communication. This also gives replay and buffering capability during downstream outages."
+
+### Q2. How do you handle data consistency across microservices (no distributed transactions)?
+
+> "I avoid distributed 2PC transactions. Instead I use the Saga pattern — either choreography-based via events or orchestration-based with a coordinator — where each service commits its local transaction and publishes an event; compensating actions handle rollback if a later step fails. I also design operations to be idempotent so retries don't cause duplicate side effects."
+
+### Q3. How do you handle service discovery and configuration in your microservices setup?
+
+> "I've used Eureka/Spring Cloud Config in some setups, and in AWS-native setups I rely on ECS/EKS service discovery (Cloud Map) or ALB target groups instead of a separate discovery server. For configuration, externalized config via Spring Cloud Config, AWS Parameter Store, or Secrets Manager keeps environment-specific values out of the code."
+
+### Q4. What's your approach to resilience — circuit breakers, retries, timeouts?
+
+> "I set explicit connect/read timeouts on every downstream call, use Resilience4j for circuit breakers so a failing service doesn't get hammered, and apply retries with exponential backoff only for idempotent operations. Bulkheading — isolating thread pools per downstream dependency — prevents one slow service from exhausting resources needed by others."
+
+---
+
+## AWS
+
+### Q1. Walk me through how you'd deploy a Spring Boot microservice on AWS.
+
+> "Typically I containerize the service with Docker, push the image to ECR, and deploy on ECS Fargate or EKS depending on the team's orchestration standard. Traffic comes through an ALB with target group health checks, autoscaling is configured on CPU/memory or custom CloudWatch metrics, and configuration/secrets come from Parameter Store or Secrets Manager rather than being baked into the image."
+
+### Q2. Difference between SQS and SNS, and when do you use each?
+
+> "SQS is a queue — one message is typically consumed by one consumer, good for decoupling a producer from a worker and for buffering load. SNS is pub/sub — one message can fan out to multiple subscribers (including multiple SQS queues, Lambda, email, etc.). I often combine them: SNS publishes an event, and multiple SQS queues subscribe so different services can process the same event independently."
+
+### Q3. How do you secure access between services and to AWS resources?
+
+> "I use IAM roles attached to the ECS task/EC2 instance rather than embedding access keys, follow least-privilege policies scoped to specific resources and actions, and use security groups/VPC design to restrict network-level access. For service-to-service auth I've used mutual TLS or signed requests depending on the setup."
+
+### Q4. How would you troubleshoot a Lambda/ECS service that's timing out intermittently?
+
+> "I'd check CloudWatch Logs and metrics first — cold starts, memory pressure, or throttling on Lambda; CPU/memory on ECS tasks. I'd look at downstream dependency latency (DB, other APIs) since intermittent timeouts are often caused by a dependency, not the service itself. X-Ray tracing helps pinpoint exactly which hop in the call chain is slow."
+
+---
+
+## Streams (Java Stream API)
+
+### Q1. Write a stream to group a list of employees by department and get average salary per department.
+
+```java
+Map<String, Double> avgSalaryByDept = employees.stream()
+    .collect(Collectors.groupingBy(
+        Employee::getDepartment,
+        Collectors.averagingDouble(Employee::getSalary)
+    ));
+```
+
+### Q2. Difference between `map()` and `flatMap()`?
+
+> "`map()` transforms each element one-to-one, producing a stream of the same shape. `flatMap()` is used when each element itself maps to a stream (e.g., a list of lists), and it flattens those into a single stream. For example, converting `List<List<String>>` into a single `List<String>` needs `flatMap`, not `map`."
+
+```java
+List<String> allWords = sentences.stream()
+    .flatMap(sentence -> Arrays.stream(sentence.split(" ")))
+    .collect(Collectors.toList());
+```
+
+### Q3. What's the difference between intermediate and terminal operations, and why does laziness matter?
+
+> "Intermediate operations like `filter`, `map`, `sorted` are lazy — they just build up a pipeline and don't execute until a terminal operation like `collect`, `forEach`, or `reduce` is invoked. This matters for performance: the stream processes each element through the whole pipeline in one pass rather than materializing intermediate collections, and it also means you can't reuse a stream once a terminal operation has consumed it."
+
+---
+
+## Coding (live or verbal, expect 1 medium problem)
+
+### Q1. Find the first non-repeating character in a string.
+
+```java
+public static Character firstNonRepeating(String str) {
+    Map<Character, Integer> frequency = new LinkedHashMap<>();
+
+    for (char ch : str.toCharArray()) {
+        frequency.put(ch, frequency.getOrDefault(ch, 0) + 1);
+    }
+
+    for (Map.Entry<Character, Integer> entry : frequency.entrySet()) {
+        if (entry.getValue() == 1) {
+            return entry.getKey();
+        }
+    }
+
+    return null;
+}
+```
+
+### Q2. Given two sorted arrays, merge them into one sorted array.
+
+```java
+public static int[] mergeSortedArrays(int[] a, int[] b) {
+    int[] result = new int[a.length + b.length];
+    int i = 0, j = 0, k = 0;
+
+    while (i < a.length && j < b.length) {
+        result[k++] = (a[i] <= b[j]) ? a[i++] : b[j++];
+    }
+    while (i < a.length) result[k++] = a[i++];
+    while (j < b.length) result[k++] = b[j++];
+
+    return result;
+}
+```
+
+### Q3. Detect a duplicate in an array in O(n).
+
+```java
+public static List<Integer> findDuplicates(int[] nums) {
+    Set<Integer> seen = new HashSet<>();
+    Set<Integer> duplicates = new LinkedHashSet<>();
+
+    for (int num : nums) {
+        if (!seen.add(num)) {
+            duplicates.add(num);
+        }
+    }
+    return new ArrayList<>(duplicates);
+}
+```
+
+At senior level, expect the interviewer to also ask you to state **time/space complexity** and possibly a follow-up like *"how would you do this with O(1) extra space?"*
+
+---
+
+## SQL
+
+### Q1. Second highest salary from an Employee table.
+
+```sql
+SELECT MAX(salary) AS second_highest
+FROM employee
+WHERE salary < (SELECT MAX(salary) FROM employee);
+```
+
+Alternative using `DENSE_RANK()`:
+
+```sql
+SELECT salary
+FROM (
+    SELECT salary, DENSE_RANK() OVER (ORDER BY salary DESC) AS rnk
+    FROM employee
+) ranked
+WHERE rnk = 2;
+```
+
+### Q2. Difference between `INNER JOIN`, `LEFT JOIN`, and `WHERE` clause filtering after a join.
+
+> "`INNER JOIN` returns only rows with matches in both tables. `LEFT JOIN` returns all rows from the left table plus matched rows from the right (NULLs where there's no match). A subtlety senior engineers should know: if you filter on a right-table column in the `WHERE` clause after a `LEFT JOIN`, it effectively turns the join into an inner join by discarding the NULL rows — the filter belongs in the `ON` clause if you want to preserve the left-join behavior."
+
+### Q3. Find duplicate rows in a table based on a column.
+
+```sql
+SELECT email, COUNT(*) AS cnt
+FROM users
+GROUP BY email
+HAVING COUNT(*) > 1;
+```
+
+### Q4. Explain indexing — when does an index NOT help?
+
+> "An index speeds up lookups and range scans on the indexed column(s), but it doesn't help when the query applies a function to the column (e.g., `WHERE UPPER(name) = 'X'`) unless it's a functional index, when the column has low cardinality (like a boolean flag), or when the query returns a large percentage of the table anyway — the optimizer may choose a full table scan over the index in that case. Indexes also add overhead to writes, so over-indexing a write-heavy table can hurt performance."
+
+---
